@@ -1,7 +1,8 @@
 # henhacks2024
 Henhacks '24 project repo
 
-Members: 
-William Hart
-Craig Barber
-Ocean (changed everything. L)
+Team Members:
+- Ocean Shen (oshen@udel.edu)
+- William Hart
+- Craig Barber (cjbarber@udel.edu)
+- Mycah Detorres (mycahdt@udel.edu)
