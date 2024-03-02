@@ -5,3 +5,4 @@ Team Members:
 - Ocean Shen (oshen@udel.edu)
 - William Hart
 - Craig Barber
+- Mycah Detorres (mycahdt@udel.edu)
