@@ -6,7 +6,7 @@ def input_func():
     return prompt
 
 def ai_user_io(user_input):
-    client = OpenAI(api_key='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')
+    client = OpenAI(api_key='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')
     while True:
         # user_input = input_func()
 

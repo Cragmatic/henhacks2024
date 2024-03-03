@@ -37,10 +37,9 @@
         </nav>
 <!--Static March calendar-->
         <div>
-            <h2 align="center" style="color: black;">
+            <h2 align="center" style=" color: black;">
                 March 2024
             </h2>
-            <br />
             <table bgcolor="white" align="center" border="1px solid black"
                 cellspacing="21" cellpadding="21" style="width: 100%; height: 100%;">
                 <!---->
@@ -102,12 +101,22 @@
                                                 <p style="background-color: rgb(168, 255, 168);">{{key}} @ {{events[key][1]}}</p>
                                             {% endif %}
                                         {% endfor %}
+                                        {% for keys in assignments %}
+                                            {% if assignments[keys][0]==i+j-4 %}
+                                                <p style="background-color: red;">{{keys}} @ {{assignments[keys][1]}}</p>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endif %}
                                     {% if i == 1 %}
                                         {{ i+j+2 }}
                                         {% for key in events %}
                                             {% if events[key][0]==i+j+2 %}
                                                 <p style="background-color: rgb(168, 255, 168);">{{key}} @ {{events[key][1]}}</p>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for keys in assignments %}
+                                            {% if assignments[keys][0]==i+j+2 %}
+                                                <p style="background-color: red;">{{keys}} @ {{assignments[keys][1]}}</p>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -118,12 +127,22 @@
                                                 <p style="background-color: rgb(168, 255, 168);">{{key}} @ {{events[key][1]}}</p>
                                             {% endif %}
                                         {% endfor %}
+                                        {% for keys in assignments %}
+                                            {% if assignments[keys][0]==i+j+8 %}
+                                                <p style="background-color: red;">{{keys}} @ {{assignments[keys][1]}}</p>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endif %}
                                     {% if i == 3 %}
                                         {{ i+j+14 }}
                                         {% for key in events %}
                                             {% if events[key][0]==i+j+14 %}
                                                 <p style="background-color: rgb(168, 255, 168);">{{key}} @ {{events[key][1]}}</p>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for keys in assignments %}
+                                            {% if assignments[keys][0]==i+j+14 %}
+                                                <p style="background-color: red;">{{keys}} @ {{assignments[keys][1]}}</p>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -134,12 +153,22 @@
                                                 <p style="background-color: rgb(168, 255, 168);">{{key}} @ {{events[key][1]}}</p>
                                             {% endif %}
                                         {% endfor %}
+                                        {% for keys in assignments %}
+                                            {% if assignments[keys][0]==i+j+20 %}
+                                                <p style="background-color: red;">{{keys}} @ {{assignments[keys][1]}}</p>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endif %}
                                     {% if i == 5 %}
                                         {{ i+j+26 }}
                                         {% for key in events %}
                                             {% if events[key][0]==i+j+26 %}
                                                 <p style="background-color: rgb(168, 255, 168);">{{key}} @ {{events[key][1]}}</p>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% for keys in assignments %}
+                                            {% if assignments[keys][0]==i+j+26 %}
+                                                <p style="background-color: red;">{{keys}} @ {{assignments[keys][1]}}</p>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
