@@ -43,7 +43,7 @@
             <br />
             <table bgcolor="white" align="center" border="1px solid black"
                 cellspacing="21" cellpadding="21" style="width: 100%; height: 100%;">
-        
+                <!---->
                 <!-- The tr tag is used to enter 
                     rows in the table -->
         
@@ -92,48 +92,264 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>1</td>
-                        <td>2</td>
+                        <td align="left" valign="top">
+                            1
+                            {% for key in events %}
+                                {% if events[key][0]==1 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td align="left" valign="top">2
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     </tr>
                     <tr></tr>
                     <tr>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
+                        <td align="left" valign="top">
+                            3
+                            {% for key in events %}
+                                {% if events[key][0]==3 %}
+                                    <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            4
+                            {% for key in events %}
+                                {% if events[key][0]==4 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            5
+                            {% for key in events %}
+                                {% if events[key][0]==5 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            6
+                            {% for key in events %}
+                                {% if events[key][0]==6 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            7
+                            {% for key in events %}
+                                {% if events[key][0]==7 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            8
+                            {% for key in events %}
+                                {% if events[key][0]==8 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            9
+                            {% for key in events %}
+                                {% if events[key][0]==9 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     </tr>
                     <tr>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
+                        <td>
+                            10
+                            {% for key in events %}
+                                {% if events[key][0]==10 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            11
+                            {% for key in events %}
+                                {% if events[key][0]==11 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            12
+                            {% for key in events %}
+                                {% if events[key][0]==12 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            13
+                            {% for key in events %}
+                                {% if events[key][0]==13 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            14
+                            {% for key in events %}
+                                {% if events[key][0]==14 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            15
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            16
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     </tr>
                     <tr>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
+                        <td>
+                            17
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            18
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            19
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            20
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            21
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            22
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            23
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     </tr>
                     <tr>
-                        <td>24</td>
-                        <td>25</td>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
-                        <td>29</td>
-                        <td>30</td>
+                        <td>
+                            24
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            25
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            26
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            27
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            28
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            29
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            30
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     </tr>
                     <tr>
-                        <td>31</td>
+                        <td>
+                            31
+                            {% for key in events %}
+                                {% if events[key][0]==2 %}
+                                <p style="background-color: green;">{{key}} @ {{events[key][1]}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                         <td></td>
                         <td></td>
                         <td></td>
