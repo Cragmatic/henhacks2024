@@ -10,13 +10,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Navbar in Flask</title>
+    <style>
+        a:link {
+            text-decoration: none;
+        }
+        #jump {
+            color: black;
+            text-align: center;
+            padding: 20px;
+            font-size: 2em
+        }
+        h5, th {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">UD Forum</a>
+            <a class="navbar-brand" href="#">Hen House</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,25 +41,55 @@
                         <a class="nav-link" href="{{ url_for('view_home') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_first_page') }}">Support Page</a>
+                        <a class="nav-link" href="{{ url_for('view_first_page') }}">Support</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed Page</a>
+                        <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar Page</a>
+                        <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div>
-            <h1 class="display-4">
-                {% if title %}
-                  {{ title }}
-                {% else %}
-                  Default title
-                {% endif %}
-            </h1>
+        <div style="margin-top: 10px;">
+            <div style="text-align: center; font-size: 3em; background-color: #f0f0f0; padding: 10px">
+                <h1>
+                    Hen House
+                </h1>
+                <h3>
+                    Description here
+                </h3>
+            </div>
+            
+            <table align = "center">
+                <thead>
+                    <tr>
+                        <th>
+                            <a id="jump" href="{{ url_for('view_first_page') }}">Support</a>
+                        </th>
+                        <th>
+                            <a id="jump" href="{{ url_for('view_second_page') }}">Feed</a>
+                        </th>
+                        <th>
+                            <a id="jump" href="{{ url_for('view_third_page') }}">Calendar</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th style="width: 33%; padding: 5px;">
+                            <h5>Get support from AI on scheduling, event suggestions, and when to plan events</h5>
+                        </th>
+                        <th style="width: 33%; padding: 5px;">
+                            <h5>Read and post on the feed on upcoming events</h5>
+                        </th>
+                        <th style="width: 33%; padding: 5px;">
+                            <h5>Find upcoming events at UD, nearby Newark, and your upcoming Canvas assignments to balance both academic and non-academic events</h5>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
