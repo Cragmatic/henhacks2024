@@ -58,30 +58,65 @@
          <div>
             <table style="border: solid;">
                <tbody id="feedTbody">
+                    <tr>
+                        <h6>@Student Wellness:</h6>
+                        <h5>Free Classes</h5>
+                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;">Join us on Monday from 5:00-7:00pm for Restorative Yoga!</h4>
+                    </tr>
+                    <tr>
+                        <h6>@Will9753:</h6>
+                        <h5>Food</h5>
+                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;">I love QDOBA burritos on Wednesdays!</h4>
+                    </tr>
+                    <tr>
+                        <h6>@University Centers:</h6>
+                        <h5>Events</h5>
+                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;"> Geek Week Field Day at </h4>
+                    </tr>
+                    <tr>
+                        <h6>@Ocean2468:</h6>
+                        <h5>Main Street Activities</h5>
+                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; margin: 0;">New Arcade just opened up on main</h4>
+                    </tr>
                </tbody>
 
             </table>
          </div>
          <div style="margin-top: 10px;">
-            <input type="text" id="feedInput" name="ADDfeed" size="50">
-            <button type="submit" id="submitBtn">Submit</button>
+
+             <input type="text" id="nameInput" name="NAMEfeed" size="50">
+             <input type="text" id="feedInput" name="ADDfeed" size="50">
+             <input type="text" id="descInput" name="DESCfeed" size="50">
+             <button type="submit" id="submitBtn">Submit</button>
+
+
          </div>
       </div>
       <script>
          document.getElementById('submitBtn').onclick = function() {
+
+             var nameValue = document.getElementById('nameInput').value;
+             var descValue = document.getElementById('descInput').value;
              var inputValue = document.getElementById('feedInput').value;
 
              var tbody = document.getElementById('feedTbody');
              var tr = document.createElement('tr');
+             var h6 = document.createElement('h6');
+             var h5 = document.createElement('h5');
              var h4 = document.createElement('h4');
 
+             h6.textContent = nameValue;
+             h5.textContent = descValue;
              h4.textContent = inputValue;
 
+             tr.appendChild(h6);
+             tr.appendChild(h5);
              tr.appendChild(h4);
              tbody.appendChild(tr);
              document.getElementById('feedInput').value = '';
+             document.getElementById('nameInput').value = '';
+             document.getElementById('descInput').value = '';
          };
-
       </script>
    </body>
 </html>

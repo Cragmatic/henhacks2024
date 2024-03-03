@@ -58,7 +58,9 @@ def view_first_page():
 def view_second_page():
     if request.method == "POST":
         addFeed = request.form.get("ADDfeed")
-        return render_template("feed.html", title="Feed page", addFeed=addFeed)
+        nameFeed = request.form.get("NAMEfeed")
+        descriptionFeed = request.form.get("DESCfeed")
+        return render_template("feed.html", title="Feed page", addFeed=addFeed, nameFeed=nameFeed, descriptionFeed=descriptionFeed)
     return render_template("feed.html", title="Feed page")
 
 @app.route("/calendar")
