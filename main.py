@@ -32,17 +32,16 @@ print(assignments)
 
 app = Flask(__name__)
 
-'''
-@app.route("/")
-def hello_world():
-    return <p>Hello, World!</p>
-'''
+app.config['MY_GLOBAL_VARIABLE'] = dict()
 
-'''
-@app.route('/')
-def main():
-    return render_template('test.html')
-'''
+def addEvent(dict, name, date):
+    date = date.lstrip('[')
+    date = date.rstrip(']')
+    splitdate = date.split(',')
+    dict[name] = [int(splitdate[0]),splitdate[1]]
+    print("add event")
+    print(dict)
+    return dict
 
 def scrape_news():
 
@@ -65,6 +64,7 @@ def scrape_news():
         splitText = myDatesTimes[i].split(" ")
         myDict[myEvents[i]] = [int(splitText[2]), splitText[4]]
     return myDict
+events= scrape_news()
 
 @app.route("/")
 def view_home():
@@ -90,9 +90,13 @@ def view_second_page():
 
 @app.route("/calendar")
 def view_third_page():
-    events= scrape_news()
-    return render_template("calendar.html", title="Calendar page", events=events, assignments=assignments, c=range(1,31))
+    print('calendar')
+    print(app.config['MY_GLOBAL_VARIABLE'])
+    return render_template("calendar.html", title="Calendar page", events=app.config['MY_GLOBAL_VARIABLE'], assignments=assignments, c=range(1,31))
 
+@app.route("/groups")
+def view_fourth_page():
+    return render_template("groups.html", events=events)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -103,7 +107,13 @@ def login():
     else:
         return render_template('login.html', message='Invalid credentials')
 
-
+@app.route('/event_clicked', methods=['POST'])
+def event_clicked():
+    # Call the function when the button is clicked
+    parameter1 = request.form['known_parameter1']
+    parameter2 = request.form['known_parameter2']
+    app.config['MY_GLOBAL_VARIABLE'] = addEvent(app.config['MY_GLOBAL_VARIABLE'], parameter1, parameter2)
+    return render_template("groups.html", events=events)
 
 if __name__ == "__main__":
     # main()
