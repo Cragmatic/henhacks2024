@@ -67,8 +67,12 @@ def scrape_news():
 events= scrape_news()
 
 @app.route("/")
-def view_home():
+def view_login():
     return render_template("login.html", title="Home page")
+
+@app.route("/home", methods=["GET", "POST"])
+def view_home():
+    return render_template("index.html", title="Home page")
 
 @app.route("/support/", methods=["GET", "POST"])
 def view_first_page():
@@ -85,7 +89,9 @@ def view_first_page():
 def view_second_page():
     if request.method == "POST":
         addFeed = request.form.get("ADDfeed")
-        return render_template("feed.html", title="Feed page", addFeed=addFeed)
+        nameFeed = request.form.get("NAMEfeed")
+        descriptionFeed = request.form.get("DESCfeed")
+        return render_template("feed.html", title="Feed page", addFeed=addFeed, nameFeed=nameFeed, descriptionFeed=descriptionFeed)
     return render_template("feed.html", title="Feed page")
 
 @app.route("/calendar")
