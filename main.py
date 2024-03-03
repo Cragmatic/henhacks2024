@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 #import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -38,12 +38,8 @@ def scrape_news():
     for y in soup.find('div', {"id": "event-discovery-list"}).find_all('div', {"style": "margin: 0px 0px 0.125rem;"}):
         myDatesTimes.append(y.text)
 
-    myDates = []
-    myTimes = []
     for i in range(len(myDatesTimes)):
         splitText = myDatesTimes[i].split(" ")
-        myDates.append(int(splitText[2]))
-        myTimes.append(splitText[4])
         myDict[myEvents[i]] = [int(splitText[2]), splitText[4]]
     
     
@@ -57,9 +53,12 @@ def view_home():
 def view_first_page():
     return render_template("index.html", title="Support page")
 
-@app.route("/feed")
+@app.route("/feed", methods =["GET", "POST"])
 def view_second_page():
-    return render_template("index.html", title="Feed page")
+    if request.method == "POST":
+        addFeed = request.form.get("ADDfeed")
+        return render_template("feed.html", title="Feed page", addFeed=addFeed)
+    return render_template("feed.html", title="Feed page")
 
 @app.route("/calendar")
 def view_third_page():

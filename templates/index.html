@@ -38,44 +38,15 @@
                 </ul>
             </div>
         </nav>
-
-        <div class="jumbotron">
+        <div>
             <h1 class="display-4">
-          		{% if title %}
-          		  {{ title }}
-          		{% else %}
-          		  Default title
-          		{% endif %}
-
-                {% if title == "Calendar page" %}
-                <div>
-                    <h2>Events: </h2>
-                    <ul>
-                        {% for e in myEvents %}
-                        <li>{{ e }}</li>
-                        {% endfor %}
-                    </ul>
-                    <h2>Dates and Times: </h2>
-                    <ul>
-                        {% for t in myDatesTimes %}
-                        <li>{{ t }}</li>
-                        {% endfor %}
-                    </ul>
-                    <h2>Event, Date, Times: </h2>
-                    <ul>
-                        {% for j in myDict %}
-                        <li>Event: {{ j }}</li>
-                        <li>Date: {{ myDict[j][0] }}</li>
-                        <li>Time: {{ myDict[j][1] }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                {% if title %}
+                  {{ title }}
+                {% else %}
+                  Default title
                 {% endif %}
-                
-
-	        </h1>
+            </h1>
         </div>
-        
     </div>
 
     <!-- Optional JavaScript -->
