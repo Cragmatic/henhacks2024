@@ -29,7 +29,7 @@ def view_second_page():
 
 @app.route("/calendar")
 def view_third_page():
-    return render_template("index.html", title="Calendar page")
+    return render_template("calendar.html", title="Calendar page")
 
 
 #def main():
