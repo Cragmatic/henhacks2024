@@ -1,118 +1,148 @@
 <!doctype html>
 <html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <style>
+         /* CSS styles for demonstration purposes */
+         .container {
+         width: 80%;
+         margin: 0 auto;
+         background-color: #f0f0f0;
+         padding: 20px;
+         }
+         .box {
+         border: 1px solid #ccc;
+         padding: 10px;
+         margin-bottom: 10px;
+         }
+      </style>
+      <title>Navbar in Flask</title>
+   </head>
+   <body>
+      <div class="container">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">UD Forum</a>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <style>
-        /* CSS styles for demonstration purposes */
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
-
-        .box {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
-
-    <title>Navbar in Flask</title>
-</head>
-
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Hen House</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_home') }}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_first_page') }}">Support</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_home') }}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_first_page') }}">Support Page</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed Page</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar Page</a>
+                  </li>
+               </ul>
 
-        <div class="jumbotron">
+            </div>
+         </nav>
+         <div class="jumbotron">
             <h1 class="display-4">
-          		Title
-	          </h1>
-        <div class="container">
-          <h1></h1>
-          <h1>AI Home</h1>
+               Title
+            </h1>
+            <div class="container">
+               <head>
+                  <!-- Include jQuery -->
+                  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+               </head>
+               <h1></h1>
+               <h1>AI Home</h1>
+               <div id="refreshableDiv">
+                  <!--
+                     Content to be refreshed
+                     <p id="content">This is the content of the refreshable div.</p>
+                     -->
+                  <form action="/support" method="POST">
+                     <label for="elani_input">What's on your mind today?</label>
+                     <input type="text" id="elani_input" name="elani_input" required>
+                     <button type="submit" value="Send" onclick="refreshDiv()">Send</button>
+                  </form>
+               </div>
+               <div class="box" id="elainiBox">
+                  {{ elaini_response }}
+               </div>
+               <button onclick="storeContent()"> Store Content </button>
+               <button onclick="clearBoxes()"> Clear Container </button>
+               <div id="resultContainer">
+                  <!-- Container to store the new content -->
+               </div>
+               <script>
+                  function clearBoxes() {
+                      saveData(JSON.stringify([]));
+                      document.getElementById("resultContainer").innerHTML = ""
+                  }
 
-        <div class="box">
-            <form action=/support method="POST">
+                  function storeContent() {
+                  const currContent = document.getElementById("elainiBox").innerHTML;
+                  const resultContainer = document.getElementById("resultContainer");
+                  const newParagraph = document.createElement("p");
+                  let dataArray = loadSavedData();
+                  try {
+                      if(!dataArray.includes(currContent)) {
+                          dataArray.push(currContent)
+                          newParagraph.innerHTML = currContent;
+                          resultContainer.appendChild(newParagraph);
+                      }
+                  } catch {
+                      dataArray = [currContent]
+                      newParagraph.innerHTML = currContent;
+                      resultContainer.appendChild(newParagraph);
+                  }
+                  saveData(dataArray);
+                  console.log("saved data")
+                  }
 
-                <label for="elani_input"> What's on your mind today? </label>
+                  function loadSavedData() {
+                    let retVal = localStorage.getItem("storedResponsesArray");
+                    if(retVal) {
+                        return JSON.parse(retVal)
+                    } else {
+                        return []
+                    }
+                  }
 
-                <input type="text" id="elani_input" name="elani_input" required>
+                  function saveData(data) {
+                    const jsonstring = JSON.stringify(data)
+                    localStorage.setItem("storedResponsesArray", jsonstring)
+                    if(data === JSON.stringify([])) {
+                        drawBoxes()
+                    }
+                  }
 
-                <input type="submit" value="Send">
+                  function drawBoxes() {
+                    const data = loadSavedData()
+                    if(data && data !== JSON.stringify([])) {
+                        for (let i = 0; i < data.length; i++) {
+                            const resultContainer = document.getElementById("resultContainer");
+                            const newParagraph = document.createElement("p");
+                            newParagraph.innerHTML = data[i];
+                            resultContainer.appendChild(newParagraph);
+                        }
+                    }
+                  }
 
-            </form>
-        </div>
+                  drawBoxes();
 
-        <div class="box" id="elainiBox">
-            <p> {{ elaini_response }} </p>
-        </div>
-
-        <script>
-            function saveToContainer() {
-                // Get the content from elaini_response
-                var elainiContent = document.getElementById('elainiBox').innerHTML;
-
-                // Create a new container and add the content to it
-                var savedContainer = document.getElementById('savedContainer');
-                var newParagraph = document.createElement('p');
-                newParagraph.textContent = elainiContent;
-                savedContainer.appendChild(newParagraph);
-            }
-        </script>
-
-        <body>
-
-            <div class="box">
-                <p id="elainiResponse">This is the dynamic content from elaini_response.</p>
-                <button type="button" onclick="saveToContainer()"> Save Elaini's Response </button>
-
+               </script>
             </div>
-
-            <div id="savedContainer">
-                <!-- Content will be dynamically added here -->
-            </div>
-
-        </body>
-    </div>
-        </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
+         </div>
+      </div>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   </body>
 </html>

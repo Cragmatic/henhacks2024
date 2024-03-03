@@ -1,104 +1,87 @@
 <!doctype html>
 <html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <title>Navbar in Flask</title>
+      <style>
+         #tableContainer {
+         width: 100%; /* Adjust this as needed */
+         }
+         table {
+         width: 100%;
+         border-collapse: collapse;
+         }
+         td, th {
+         border: 1px solid #ddd;
+         text-align: left;
+         }
+         h4 {
+         width: 100%;
+         margin: 0;
+         text-align: center;
+         padding: 20px;
+         border: solid;
+         }
+      </style>
+   </head>
+   <!-- Navbar code -->
+   <body>
+      <div class="container">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">UD Forum</a>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Navbar in Flask</title>
-    <style>
-        #tableContainer {
-            width: 100%; /* Adjust this as needed */
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        td, th {
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        h4 {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-            padding: 20px;
-            border: solid;
-        }
-    </style>
-</head>
-<!-- Navbar code -->
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Hen House</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_home') }}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_first_page') }}">Support</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar</a>
-                    </li>
-                </ul>
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_home') }}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_first_page') }}">Support Page</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed Page</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar Page</a>
+                  </li>
+               </ul>
             </div>
-        </nav>
-        <form action="/" method="post"></form>
-        <div>
-            <h2 style="text-align: center;">Hen Connect</h2>
+         </nav>
+         <form action="/" method="post"></form>
+         <div>
             <table style="border: solid;">
-                <tbody id="feedTbody">
-                    <tr>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;">@Student Wellness: Join us on Monday from 5:00-7:00pm for Restorative Yoga!</h4>
-                    </tr>
-                    <tr>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;">@Will9753: I love QDOBA burritos on Wednesdays!</h4>
-                    </tr>
-                    <tr>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;">@University Centers: Geek Week Field Day at </h4>
-                    </tr>
-                    <tr>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; margin: 0;">@Ocean2468: New Arcade just opened up on main</h4>
-                    </tr>
-                </tbody>
+               <tbody id="feedTbody">
+               </tbody>
+
             </table>
-        </div>
-        <div style="margin-top: 10px;">
+         </div>
+         <div style="margin-top: 10px;">
             <input type="text" id="feedInput" name="ADDfeed" size="50">
             <button type="submit" id="submitBtn">Submit</button>
-        </div>
-    </div>
+         </div>
+      </div>
+      <script>
+         document.getElementById('submitBtn').onclick = function() {
+             var inputValue = document.getElementById('feedInput').value;
 
-    <script>
-        document.getElementById('submitBtn').onclick = function() {
-            var inputValue = document.getElementById('feedInput').value;
-        
-            var tbody = document.getElementById('feedTbody');
-            var tr = document.createElement('tr');
-            var h4 = document.createElement('h4');
+             var tbody = document.getElementById('feedTbody');
+             var tr = document.createElement('tr');
+             var h4 = document.createElement('h4');
 
-            h4.textContent = inputValue;
+             h4.textContent = inputValue;
 
-            tr.appendChild(h4);
-            tbody.appendChild(tr);
-            document.getElementById('feedInput').value = '';
-        };
+             tr.appendChild(h4);
+             tbody.appendChild(tr);
+             document.getElementById('feedInput').value = '';
+         };
 
-
-
-    </script>
-</body>
-
+      </script>
+   </body>
 </html>
