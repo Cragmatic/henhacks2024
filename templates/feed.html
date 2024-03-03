@@ -16,15 +16,33 @@
          border-collapse: collapse;
          }
          td, th {
-         border: 1px solid #ddd;
          text-align: left;
          }
+         #row {
+            border: solid;
+            border-bottom: solid;
+            width: 100%
+         }
          h4 {
-         width: 100%;
-         margin: 0;
-         text-align: center;
-         padding: 20px;
-         border: solid;
+            width: 100%;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+         }
+         h5 {
+            margin: 0;
+         }
+         h6 {
+            padding-top: 10px;
+         }
+         h2 {
+            text-align: center;
+         }
+         #myText{
+            width: 100%;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
          }
       </style>
    </head>
@@ -32,7 +50,7 @@
    <body>
       <div class="container">
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">UD Forum</a>
+            <a class="navbar-brand" href="#">Hen House</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,50 +61,61 @@
                      <a class="nav-link" href="{{ url_for('view_home') }}">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ url_for('view_first_page') }}">Support Page</a>
+                     <a class="nav-link" href="{{ url_for('view_first_page') }}">Support</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed Page</a>
+                     <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar Page</a>
+                     <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar</a>
                   </li>
                </ul>
             </div>
          </nav>
          <form action="/" method="post"></form>
          <div>
+            <h2>Hen Connect</h2>
             <table style="border: solid;">
                <tbody id="feedTbody">
                     <tr>
-                        <h6>@Student Wellness:</h6>
-                        <h5>Free Classes</h5>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;">Join us on Monday from 5:00-7:00pm for Restorative Yoga!</h4>
+                        <div id="row">
+                            <h6>@Student Wellness:</h6>
+                            <h5>Free Classes</h5>
+                            <h4 id="myText" style="text-align: center; padding: 20px; margin: 0;">Join us on Monday from 5:00-7:00pm for Restorative Yoga!</h4>
+                        </div>
                     </tr>
                     <tr>
-                        <h6>@Will9753:</h6>
-                        <h5>Food</h5>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;">I love QDOBA burritos on Wednesdays!</h4>
+                        <div id="row">
+                            <h6>@Will9753:</h6>
+                            <h5>Food</h5>
+                            <h4 id="myText" style="text-align: center; padding: 20px; margin: 0;">I love QDOBA burritos on Wednesdays!</h4>
+                        </div>
                     </tr>
                     <tr>
-                        <h6>@University Centers:</h6>
-                        <h5>Events</h5>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; border-bottom: none; margin: 0;"> Geek Week Field Day at </h4>
+                        <div id="row">
+                            <h6>@University Centers:</h6>
+                            <h5>Events</h5>
+                            <h4 id="myText" style="text-align: center; padding: 20px; margin: 0;"> Geek Week Field Day at </h4>
+                        </div>
+                        
                     </tr>
                     <tr>
-                        <h6>@Ocean2468:</h6>
-                        <h5>Main Street Activities</h5>
-                        <h4 class="post" style="text-align: center; padding: 20px; border: solid; margin: 0;">New Arcade just opened up on main</h4>
+                        <div id="row">
+                            <h6>@Ocean2468:</h6>
+                            <h5>Main Street Activities</h5>
+                            <h4 id="myText" style="text-align: center; padding: 20px; margin: 0;">New Arcade just opened up on main</h4>
+                        </div>
                     </tr>
                </tbody>
 
             </table>
          </div>
          <div style="margin-top: 10px;">
-
-             <input type="text" id="nameInput" name="NAMEfeed" size="50">
-             <input type="text" id="feedInput" name="ADDfeed" size="50">
-             <input type="text" id="descInput" name="DESCfeed" size="50">
+             <input type="text" id="nameInput" name="NAMEfeed" size="50" placeholder="Name:">
+             <p> </p>
+             <input type="text" id="descInput" name="DESCfeed" size="50" placeholder="Subject:">
+             <p> </p>
+             <input type="text" id="feedInput" name="ADDfeed" size="50" placeholder="Text:">
              <button type="submit" id="submitBtn">Submit</button>
 
 
@@ -100,19 +129,25 @@
              var inputValue = document.getElementById('feedInput').value;
 
              var tbody = document.getElementById('feedTbody');
+             var div = document.createElement('div');
+             div.id = 'row';
              var tr = document.createElement('tr');
              var h6 = document.createElement('h6');
              var h5 = document.createElement('h5');
              var h4 = document.createElement('h4');
 
-             h6.textContent = nameValue;
+             h6.textContent = "@".concat(nameValue, ":");
              h5.textContent = descValue;
-             h4.textContent = inputValue;
+             h4.textContent = inputValue
+
+             div.style.width="100%";
+             h4.style.textAlign = 'center';
 
              tr.appendChild(h6);
              tr.appendChild(h5);
              tr.appendChild(h4);
-             tbody.appendChild(tr);
+             div.appendChild(tr)
+             tbody.appendChild(div);
              document.getElementById('feedInput').value = '';
              document.getElementById('nameInput').value = '';
              document.getElementById('descInput').value = '';
@@ -120,3 +155,5 @@
       </script>
    </body>
 </html>
+
+
