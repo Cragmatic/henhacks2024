@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Navbar in Flask</title>
+</head>
+<!-- Navbar code -->
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">UD Forum</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('view_home') }}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('view_first_page') }}">Support Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('view_second_page') }}">Feed Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('view_third_page') }}">Calendar Page</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+<!--Static March calendar-->
+        <div>
+            <h2 align="center" style="color: black;">
+                March 2024
+            </h2>
+            <br />
+            <table bgcolor="white" align="center" border="1px solid black"
+                cellspacing="21" cellpadding="21" style="width: 100%; height: 100%;">
+        
+                <!-- The tr tag is used to enter 
+                    rows in the table -->
+        
+                <!-- It is used to give the heading to the
+                    table. We can give the heading to the 
+                    top and bottom of the table -->
+        
+                <caption align="top">
+                    <!-- Here we have used the attribute 
+                        that is style and we have colored 
+                        the sentence to make it better 
+                        depending on the web page-->
+                </caption>
+        
+                <!-- Here th stands for the heading of the
+                    table that comes in the first row-->
+        
+                <!-- The text in this table header tag will 
+                    appear as bold and is center aligned-->
+        
+                <thead>
+                    <tr>
+                        <!-- Here we have applied inline style 
+                            to make it more attractive-->
+                        <th style="color: white; background: blue; text-align: center;">
+                            Sun</th>
+                        <th style="color: white; background: blue; text-align: center;">
+                            Mon</th>
+                        <th style="color: white; background: blue; text-align: center;">
+                            Tue</th>
+                        <th style="color: white; background: blue; text-align: center;">
+                            Wed</th>
+                        <th style="color: white; background: blue; text-align: center;">
+                            Thu</th>
+                        <th style="color: white; background: blue; text-align: center;">
+                            Fri</th>
+                        <th style="color: white; background: blue; text-align: center;">
+                            Sat</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
