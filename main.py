@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import requests
+#import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
@@ -47,7 +47,7 @@ def scrape_news():
         myDict[myEvents[i]] = [int(splitText[2]), splitText[4]]
     
     
-    return myEvents, myDatesTimes, myDict
+    return myDict
 
 @app.route("/")
 def view_home():
@@ -63,8 +63,8 @@ def view_second_page():
 
 @app.route("/calendar")
 def view_third_page():
-    myEvents, myDatesTimes, myDict= scrape_news()
-    return render_template("index.html", title="Calendar page", myEvents=myEvents, myDatesTimes=myDatesTimes, myDict=myDict)
+    events= scrape_news()
+    return render_template("calendar.html", title="Calendar page", events=events, c=range(1,31))
 
 
 #def main():
