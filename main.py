@@ -67,8 +67,12 @@ def scrape_news():
     return myDict
 
 @app.route("/")
-def view_home():
+def view_login():
     return render_template("login.html", title="Home page")
+
+@app.route("/home", methods=["GET", "POST"])
+def view_home():
+    return render_template("index.html", title="Home page")
 
 @app.route("/support/", methods=["GET", "POST"])
 def view_first_page():
