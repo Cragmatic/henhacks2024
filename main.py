@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+
+import ai
 
 app = Flask(__name__)
 
@@ -19,24 +21,36 @@ def main():
 def view_home():
     return render_template("index.html", title="Home page")
 
-@app.route("/support")
+
+@app.route("/support/", methods=["GET", "POST"])
 def view_first_page():
-    return render_template("index.html", title="Support page")
+    elaini_response = ''
+
+    if request.method == "POST":
+        # print(request.form["elani_input"])
+        elaini_response = ai.ai_user_io(request.form["elani_input"])
+
+    # elaini_input = ai.input_func
+    # elaini_response = ai.ai_user_io
+
+    return render_template(
+        "ai.html",
+        title="Elaini: Customized AI to adapt to your needs!",
+        # elaini_input = elaini_input,
+        elaini_response=elaini_response
+    )
+
 
 @app.route("/feed")
 def view_second_page():
     return render_template("index.html", title="Feed page")
+
 
 @app.route("/calendar")
 def view_third_page():
     return render_template("index.html", title="Calendar page")
 
 
-#def main():
-#    print("hiii")
-
-
-
 if __name__ == "__main__":
-    #main()
+    # main()
     app.run()
