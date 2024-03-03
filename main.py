@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-#import requests
+import ai
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
@@ -49,9 +49,25 @@ def scrape_news():
 def view_home():
     return render_template("index.html", title="Home page")
 
-@app.route("/support")
+
+@app.route("/support/", methods=["GET", "POST"])
 def view_first_page():
-    return render_template("index.html", title="Support page")
+    elaini_response = ''
+
+    if request.method == "POST":
+        # print(request.form["elani_input"])
+        elaini_response = ai.ai_user_io(request.form["elani_input"])
+
+    # elaini_input = ai.input_func
+    # elaini_response = ai.ai_user_io
+
+    return render_template(
+        "ai.html",
+        title="Elaini: Customized AI to adapt to your needs!",
+        # elaini_input = elaini_input,
+        elaini_response=elaini_response
+    )
+
 
 @app.route("/feed", methods =["GET", "POST"])
 def view_second_page():
@@ -60,15 +76,12 @@ def view_second_page():
         return render_template("feed.html", title="Feed page", addFeed=addFeed)
     return render_template("feed.html", title="Feed page")
 
+
 @app.route("/calendar")
 def view_third_page():
     events= scrape_news()
     return render_template("calendar.html", title="Calendar page", events=events, c=range(1,31))
 
-
-#def main():
-#    print("hiii")
-
 if __name__ == "__main__":
-    #main()
+    # main()
     app.run()
