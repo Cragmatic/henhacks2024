@@ -1,7 +1,34 @@
 from flask import Flask, render_template, request, redirect, url_for
 import ai
+import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+
+# URL of the Canvas API endpoint
+courseurl = "https://udel.instructure.com:443/api/v1/courses/1761781/assignments?order_by=due_at"
+# Canvas access token
+access_token = "25~MeKzRGR5wUWF9au7XwVeceEIubMRsucYxAi1AwsycUxpuvt8CzVtI7tiQlSROaDU"
+#"25~EQFlkWacDA3dN9NTEsxXl7GRwsXr7B5H6h0xrssjgRmNnwglJ1RjDrumO6fBYSZ6"
+headers = {
+    "Authorization": f"Bearer {access_token}",
+    "Content-Type": "application/json",
+}
+
+response = requests.get(courseurl, headers=headers)
+
+assignments = dict()
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    # Parse the JSON response
+    data = response.json()
+    # Print some information from the response
+    for assignment in data:
+        if (assignment['due_at'][5:7] == '03'):
+            assignments[assignment['name']] = [int(assignment['due_at'][8:10]), '11pm']
+else:
+    print("Error:", response.status_code)
+    print("Response:", response.text)
+print(assignments)
 
 app = Flask(__name__)
 
@@ -66,7 +93,7 @@ def view_second_page():
 @app.route("/calendar")
 def view_third_page():
     events= scrape_news()
-    return render_template("calendar.html", title="Calendar page", events=events, c=range(1,31))
+    return render_template("calendar.html", title="Calendar page", events=events, assignments=assignments, c=range(1,31))
 
 
 @app.route("/login", methods=["GET", "POST"])
